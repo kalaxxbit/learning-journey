@@ -12,5 +12,5 @@ void PrintName(string Name){
 }
 int main(int argc, char *argv[])
 {
-    PrintText(ReadName());
+    PrintName(ReadName());
 }
