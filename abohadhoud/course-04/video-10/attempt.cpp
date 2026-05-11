@@ -4,17 +4,17 @@ using namespace std;
 short ReadOneGrade(){
     short Grade;
     cout<<"Please Enter Grade: ";
-    cin<<Grade;
+    cin>>Grade;
     return Grade;
 }
 
-short* ReadGrades(){
-    short Grades[3];
+void FillReadGradesInArray(short *Array){
+    
     for (int i=0;i<=2;i++){
           cout<<"Grade-"<<i+1<<endl;
-       Grades[i]=ReadOneGrade();
+       Array[i]=ReadOneGrade();
     }
-    return Grades;
+ 
 }
 short SumThreeGrades(short *Grades){
     return (Grades[0]+Grades[1]+Grades[2])/3;
@@ -24,6 +24,7 @@ void PrintGrades(short Text){
 }
 int main(int argc, char *argv[])
 {
-
-   PrintGrades(SumThreeGrades(ReadGrades()));
+    short Grades[3];
+    FillReadGradesInArray(Grades);
+   PrintGrades(SumThreeGrades(Grades));
 }
