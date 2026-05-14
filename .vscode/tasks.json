@@ -6,15 +6,22 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-o", "tmp",
+                "-o",
+                "tmp",
                 "${file}",
-                "&&", "./tmp", "&&", "rm", "tmp"
+                "&&",
+                "./tmp",
+                "&&",
+                "rm",
+                "tmp"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": ["$gcc"],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "presentation": {
                 "reveal": "always",
                 "panel": "new"
