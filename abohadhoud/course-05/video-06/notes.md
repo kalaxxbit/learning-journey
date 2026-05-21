@@ -1,5 +1,3 @@
-dived and conquer
-simpleste
-make main clear
-tree calls
-you can use mod to get the last num 
+تعلمت حساب مجموع الأرقام باستخدام حلقة while مع باقي قسمة 10.
+قسمت الكود إلى دالة قراءة ودالة حساب المجموع ودالة الطباعة.
+بهذه الطريقة يصبح المنطق رياضيًا وقابلًا لإعادة الاستخدام.

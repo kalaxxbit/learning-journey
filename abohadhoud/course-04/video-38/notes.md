@@ -1,4 +1,3 @@
-no need to add a loooot of checkers when you aleryady have clear input
-dived and conquer
-main must be for just function call logic 
-some cases you need to use switch case instaed of if
+تعلمت فحص العدد الأولي بالتكرار حتى الجذر التربيعي للعدد.
+من الأفضل فصل دالة التحقق عن دالة قراءة المدخلات وطباعة النتيجة.
+وضعت شرطًا واضحًا لأن العدد يجب أن يكون أكبر من 1 قبل الفحص.

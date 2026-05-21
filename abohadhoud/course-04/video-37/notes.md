@@ -1,7 +1,3 @@
-dived and conquer
-each function has a **separate** function
-each function has a $$
-descriptive
-$$ name
-no problem with adding muti chekers
-where you need just print thing no need save it in var
+تعلمت استخدام حلقة sentinel لإيقاف الإدخال عندما يصل المستخدم إلى قيمة خاصة.
+قسمت الكود إلى دالة لقراءة الرقم ودالة لجمع الأرقام حتى -99.
+بهذه الطريقة يظل main بسيطًا، وفهم المنطق أسهل.
