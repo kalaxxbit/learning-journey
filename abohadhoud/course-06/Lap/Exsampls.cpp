@@ -1,13 +1,18 @@
 #include "MySmallLibrary.h"
+#include <iomanip>
+#include <vector>
 using namespace std;
 // Declaration Vs Definition
 void A();
-void B(){
-    cout<<"IM B"<<endl;
+void B()
+{
+
+    cout << "IM B" << endl;
     A();
 }
-void A(){
-    cout<<"IM A"<<endl;
+void A()
+{
+    cout << "IM A" << endl;
     B();
 }
 // DefAult Parameters
@@ -16,36 +21,63 @@ int MySum(int a, int b, int c = 0, int d = 0)
     return (a + b + c + d);
 }
 
+void PrintNumbers(int N, int M)
+{
+    if (N <= M)
+    {
+        cout << N << endl;
+    }
+    PrintNumbers(N + 1, M);
+    // 1 + 1 = 2 | 2 + 1 = 3 | 3 + 1 = 4 ;
+}
 
+void MyFunctionStatic()
+{
+    // Function ءاهتناب Static عم ريغتملا ةايح يهتنت لا
+    //  هئاعدتسلا ةقباسلا ةميقلا ىلع ظفاحي
+    static int Number = 1; // 2
+}
 
-// رتمارابلا عون فلاتخا
-double MySum(double a, double b)
+void Swap(int& a, int& b)
 {
-return (a + b);
+    int Temp = a;
+    a = b;
+    b = Temp;
 }
-// رتمارابلا عون فلاتخا
-int MySum(int a, int b)
+void SwapVectorRandom(vector<int>& v)
 {
-return (a + b);
-}
-// رتمارابلا ددع فل
-// 
-// اتخا
-int MySum(int a, int b , int c)
-{
-return (a + b + c);
-}
-// رتمارابلا ددع فلاتخا
-int MySum(int a, int b, int c , int d)
-{
-return (a + b + c + d);
+    for (int i = 0; i < v.size(); i++)
+    {
+        Swap(v.at(i), v.at(RandomFromTo(0, v.size() - 1)));
+    }
+    
 }
 
 
 int main(int argc, char *argv[])
 {
-    B(); //Function B call A and A call B etc...
-    //cou<<MySum(5,5);
+    // B(); //Function B cal A and A call B etc...
+    // cou<<MySum(5,5);
+   /* cout << setw(9) << "N" << setw(9) << "M" << endl;
+    vector <int> v{1, 2, 3, 4, 5};
+    cout<<"Numbers Of Vector : ";
+    for(const int& element : v)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+    cout<<"Numbers Of Vector After Swap : ";
+    SwapVectorRandom(v);
+    for(const int& element : v)
+    {
+        cout << element << " ";
+    }
+    cout << endl;*/
+    int a = 5;
+    int *p = &a;
+    cout << "Value of a : " << a << endl;
+    cout << "Address of a : " << &a << endl;
+    cout << "Value of p : " << p << endl;
+    cout << "Dereference p : " << *p << endl;
     return 0;
-
 }
