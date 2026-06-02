@@ -72,12 +72,14 @@ int main(int argc, char *argv[])
     {
         cout << element << " ";
     }
-    cout << endl;*/
+    cout << endl;*//*
     int a = 5;
     int *p = &a;
     cout << "Value of a : " << a << endl;
     cout << "Address of a : " << &a << endl;
     cout << "Value of p : " << p << endl;
-    cout << "Dereference p : " << *p << endl;
+    cout << "Dereference p : " << *p << endl;*/
+    int x = 10 , * p;  //  أطخ // Value  لا نزخي ميق P = Pointer p = x; p = 50;  //  حيحصلا // Address  نزخي طقف ناونع P = Pointer p = &x;  //  أطخ // ينعت لوصولا  ىلا  ةميقلا Dereference  // Value لا  متي  نيزخت ناونع  يف  ةميق *p = &x;
+int a = 10;  int& x = a;  // Print Address  cout << &a << endl;  cout << &x << endl;  // Print Value  cout << a << endl;  cout << x << endl;  int* p = &a;  cout << p << endl;  cout << *p << endl;
     return 0;
 }
