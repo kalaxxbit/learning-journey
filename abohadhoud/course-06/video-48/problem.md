@@ -1,0 +1,1 @@
+#  Iterator ❖ ةقيرط : رورملل  رصانع ىلع Pointer مادختساب  Vector Vector عون عم Iterator عون قباطت نم دبلا ❖  NameVector.begin() ❖ رصنع لوأ ىلا لوصولل يف Vector  NameVector.end() ❖ ىلا لوصوللرخآ  يف رصنع Vector
