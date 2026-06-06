@@ -1,0 +1,1 @@
+vector <int> num{ 1,2,3,4,5 };  try  {  // Exception  // crash رطسلا يذلا كشت  هنأ لمعي قلاغإ جمانربلا لكشب ئجافم    cout << num.at(5);  }  catch (...)  {  // Handling  // crash ذيفنت  طرشلا اذإ ثدح   cout << "out of bound \n";  }
