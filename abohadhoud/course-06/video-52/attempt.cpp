@@ -1,0 +1,11 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    fstream MyFile;
+    MyFile.open("MyFile.txt" ,ios::out);
+    if(MyFile.is_open()){
+        MyFile<<"Hi this is the first line";
+        MyFile.close();
+    }
+}
