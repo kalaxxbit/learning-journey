@@ -1,4 +1,15 @@
-mkdir -p abohadhoud/course-$1/video-$2
-cd abohadhoud/course-$1/video-$2
+for file in attempt.cpp solution.cpp
+do
+cat > "$file" << 'EOF'
+#include <iostream>
+#include "../../lib/MySmallLibrary.h"
 
-touch problem.md attempt.cpp solution.cpp notes.md
+using namespace std;
+
+int main()
+{
+
+    return 0;
+}
+EOF
+done
