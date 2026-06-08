@@ -4,7 +4,7 @@
 #include <fstream>
 #include <unistd.h>
 using namespace std;
-
+// I Know Thats Bad for performc but idc now because im not reasch that level yet
 char getch()
 {
 	struct termios oldt, newt;
