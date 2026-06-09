@@ -5,14 +5,14 @@ if [ -z "$1" ] || [ -z "$2" ]; then
     exit 1
 fi
 
-mkdir -p abohadhoud/course-$1/video-$2
-cd abohadhoud/course-$1/video-$2
+mkdir -p abohadhoud/progress/course-$1/video-$2
+cd abohadhoud/progress/course-$1/video-$2
 
 for file in attempt.cpp solution.cpp
 do
 cat > "$file" << 'EOF'
 #include <iostream>
-#include "../../lib/MySmallLibrary.h"
+#include "../../../lib/MySmallLibrary.h"
 
 using namespace std;
 
@@ -26,4 +26,4 @@ done
 
 touch problem.md notes.md
 
-echo "Created: abohadhoud/course-$1/video-$2"
+echo "Created: abohadhoud/progress/course-$1/video-$2"
