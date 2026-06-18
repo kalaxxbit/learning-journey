@@ -1,96 +1,63 @@
-#include "MySmallLibrary.h"
+#include "../lib/MySmallLibrary.h"
 #include <iomanip>
 #include <vector>
 using namespace std;
+
+// DANGER
+// testing area
+//  keep out
+
 // Declaration Vs Definition
 void A();
-void B()
-{
+void B() {
 
-    cout << "IM B" << endl;
-    A();
+  cout << "IM B" << endl;
+  A();
 }
-void A()
-{
-    cout << "IM A" << endl;
-    B();
+void A() {
+  cout << "IM A" << endl;
+  B();
 }
 // DefAult Parameters
-int MySum(int a, int b, int c = 0, int d = 0)
-{
-    return (a + b + c + d);
+int MySum(int a, int b, int c = 0, int d = 0) { return (a + b + c + d); }
+
+void PrintNumbers(int N, int M) {
+  if (N <= M) {
+    cout << N << endl;
+  }
+  PrintNumbers(N + 1, M);
+  // 1 + 1 = 2 | 2 + 1 = 3 | 3 + 1 = 4 ;
 }
 
-void PrintNumbers(int N, int M)
-{
-    if (N <= M)
-    {
-        cout << N << endl;
-    }
-    PrintNumbers(N + 1, M);
-    // 1 + 1 = 2 | 2 + 1 = 3 | 3 + 1 = 4 ;
+void MyFunctionStatic() {
+  // Function ءاهتناب Static عم ريغتملا ةايح يهتنت لا
+  //  هئاعدتسلا ةقباسلا ةميقلا ىلع ظفاحي
+  static int Number = 1; // 2
 }
 
-void MyFunctionStatic()
-{
-    // Function ءاهتناب Static عم ريغتملا ةايح يهتنت لا
-    //  هئاعدتسلا ةقباسلا ةميقلا ىلع ظفاحي
-    static int Number = 1; // 2
+void Swap(int &a, int &b) {
+  int Temp = a;
+  a = b;
+  b = Temp;
 }
-
-void Swap(int& a, int& b)
-{
-    int Temp = a;
-    a = b;
-    b = Temp;
+void SwapVectorRandom(vector<int> &v) {
+  for (int i = 0; i < v.size(); i++) {
+    Swap(v.at(i), v.at(RandomFromTo(0, v.size() - 1)));
+  }
 }
-void SwapVectorRandom(vector<int>& v)
-{
-    for (int i = 0; i < v.size(); i++)
-    {
-        Swap(v.at(i), v.at(RandomFromTo(0, v.size() - 1)));
-    }
-    
+bool Bah(string &S, char &I) {
+  if (S.length() > 0) {
+    I = S[S.length() - 1];
+    S.pop_back();
+    return 1;
+  }
+  return 0;
 }
-
-
-int main(int argc, char *argv[])
-{
-    // B(); //Function B cal A and A call B etc...
-    // cou<<MySum(5,5);
-   /* cout << setw(9) << "N" << setw(9) << "M" << endl;
-    vector <int> v{1, 2, 3, 4, 5};
-    cout<<"Numbers Of Vector : ";
-    for(const int& element : v)
-    {
-        cout << element << " ";
-    }
-    cout << endl;
-    cout<<"Numbers Of Vector After Swap : ";
-    SwapVectorRandom(v);
-    for(const int& element : v)
-    {
-        cout << element << " ";
-    }
-    cout << endl;*//*
-    int a = 5;
-    int *p = &a;
-    cout << "Value of a : " << a << endl;
-    cout << "Address of a : " << &a << endl;
-    cout << "Value of p : " << p << endl;
-    cout << "Dereference p : " << *p << endl;*/
-  /*  int x = 10 , * p;  //  أطخ // Value  لا نزخي ميق P = Pointer p = x; p = 50;  //  حيحصلا // Address  نزخي طقف ناونع P = Pointer p = &x;  //  أطخ // ينعت لوصولا  ىلا  ةميقلا Dereference  // Value لا  متي  نيزخت ناونع  يف  ةميق *p = &x;
-int a = 10;  int& x = a;  // Print Address  cout << &a << endl;  cout << &x << endl;  // Print Value  cout << a << endl;  cout << x << endl;  int* p = &a;  cout << p << endl;  cout << *p << endl;
-    */
-   
-    int arr[4] = { 10,20,30,40 };
-    void *p;
-    p =new int;
-    cout <<*(static_cast <int *> (p))<<endl;
-      cout <<p;
-    delete p;
-    
-    
-      
-    return 0;
+int main(int argc, char *argv[]) {
+  string S = "987654321";
+  char I = 0;
+  while (Bah(S, I)) {
+    cout << I << endl;
+  }
+  return 0;
 }
