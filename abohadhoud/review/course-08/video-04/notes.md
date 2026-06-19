@@ -1,0 +1,1 @@
+use "short" when you numbder is small like age or year (maybe my code crash in year 65537)
