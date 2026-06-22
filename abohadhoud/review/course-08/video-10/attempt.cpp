@@ -19,7 +19,7 @@ short ReadShortNumber(string msg) {
 short TotalDaysFromBeginningOfTheYear(sDate Date) {
   short TotalDays = 0;
   for (short i = 1; i < Date.Month; i++) {
-    cout << i << endl;
+
     TotalDays += NumberOfDaysInAMonth(i, Date.Year);
   }
   return TotalDays + Date.Day;
