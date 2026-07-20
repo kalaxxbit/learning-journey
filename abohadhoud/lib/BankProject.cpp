@@ -46,8 +46,8 @@ enum enMainMenuePermissions {
   pTranactions = 32,
   pManageUsers = 64
 };
-const string ClientsFileName = "Clients.txt";
-const string UsersFileName = "Users.txt";
+const string ClientsFileName = "abohadhoud/lib/Clients.txt";
+const string UsersFileName = "abohadhoud/lib/Users.txt";
 stUser CurrentUser;
 void ShowMainMenue();
 void ShowTransactionsMenue();
