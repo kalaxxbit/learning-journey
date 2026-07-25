@@ -1,7 +1,9 @@
 #include "../../../lib/MySmallLibrary.h"
+#include <cctype>
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <vector>
 
 using namespace std;
@@ -41,6 +43,7 @@ vector<string> SplitString(string S1, string Delim) {
   }
   return vString;
 }
+
 sClient ConvertLinetoRecord(string Line, string Seperator = "#//#") {
   sClient Client;
   vector<string> vClientData;
@@ -52,6 +55,16 @@ sClient ConvertLinetoRecord(string Line, string Seperator = "#//#") {
   Client.AccountBalance = stod(vClientData[4]); // cast string to
 
   return Client;
+}
+
+string ConvertRecordToLine(sClient Client, string Seperator = "#//#") {
+  string stClientRecord = "";
+  stClientRecord += Client.AccountNumber + Seperator;
+  stClientRecord += Client.PinCode + Seperator;
+  stClientRecord += Client.Name + Seperator;
+  stClientRecord += Client.Phone + Seperator;
+  stClientRecord += to_string(Client.AccountBalance);
+  return stClientRecord;
 }
 vector<sClient> LoadCleintsDataFromFile(string FileName) {
   vector<sClient> vClients;
@@ -67,6 +80,43 @@ vector<sClient> LoadCleintsDataFromFile(string FileName) {
     MyFile.close();
   }
   return vClients;
+}
+
+vector<sClient> SaveCleintsDataToFile(string FileName,
+                                      vector<sClient> vClients) {
+  fstream MyFile;
+  MyFile.open(FileName, ios::out); // overwrite
+  string DataLine;
+  if (MyFile.is_open()) {
+    for (sClient C : vClients) {
+      if (C.MarkForDelete == false) {
+        // we only write records that are not marked for
+        DataLine = ConvertRecordToLine(C);
+        MyFile << DataLine << endl;
+      }
+    }
+    MyFile.close();
+  }
+  return vClients;
+}
+void PauseSystem() {
+
+  cout << "Press Any Key To go back to Main Menu";
+
+  // Clear any leftover characters (like newlines) still in the input buffer
+  cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+  // Wait for the user to press Enter
+  cin.get();
+}
+void SaveChanges() {
+  vector<sClient> ClientsList = LoadCleintsDataFromFile(ClientsFileName);
+  for (sClient &C : ClientsList) {
+    if (C.AccountNumber == CurrentClint.AccountNumber) {
+      C = CurrentClint;
+    }
+  }
+  SaveCleintsDataToFile(ClientsFileName, ClientsList);
 }
 bool FindUserByUsernameAndPassword(string UserName, string Password,
                                    sClient &Client) {
@@ -87,8 +137,17 @@ bool LoadUserInfo(string UserName, string Password) {
   }
 }
 
+short ReadQuickWithDrawOption() {
+  cout << "Choose what to withdraw from [1] to [8] ? ";
+  short Choice = 0;
+  cin >> Choice;
+  return Choice;
+}
+void PrinBalance() {
+  cout << "\nYour Balance Is : " << CurrentClint.AccountBalance << endl;
+}
 short ReadMainMenueOption() {
-  cout << "Choose what do you want to do? [1 to 5]? ";
+  cout << "Choose what do you want to do? [1 to 8]? ";
   short Choice = 0;
   cin >> Choice;
   return Choice;
@@ -97,11 +156,67 @@ void GoBackToMainMenue() {
   ClearScreen();
   ShowMainMenue();
 }
+bool WithDrawFromClient(int HowMuchMouny) {
 
+  if (HowMuchMouny > CurrentClint.AccountBalance) {
+    cout << "The amount exceeds your balance , make another choice" << endl;
+    return false;
+  }
+  char ans = 'N';
+  cout << "Are You Sure To Make This Transaction ? N/y : ";
+  cin >> ans;
+  if (toupper(ans) != 'Y') {
+    return false;
+  }
+  CurrentClint.AccountBalance -= HowMuchMouny;
+  return true;
+}
+bool PerfromQuickWithDrawOption(short Choice) {
+  switch (Choice) {
+  case 1:
+    return WithDrawFromClient(20);
+
+  case 2:
+    return WithDrawFromClient(50);
+
+  case 3:
+    return WithDrawFromClient(100);
+
+  case 4:
+    return WithDrawFromClient(200);
+
+  case 5:
+    return WithDrawFromClient(400);
+
+  case 6:
+    return WithDrawFromClient(600);
+
+  case 7:
+    return WithDrawFromClient(800);
+
+  case 8:
+    return WithDrawFromClient(1000);
+  }
+  return false;
+}
 void ShowQuickWithDrawScreen() {
+  string line = "======================";
+  cout << setw(4) << line << endl;
+  cout << setw(4) << "\tQuick Withdraw " << endl;
+  cout << setw(4) << line << endl;
   cout << setw(4) << "[1] 20\t[2] 50" << endl;
-  cout << setw(4) << "[3] 100\t[4] 200";
-  cout << setw(4) << "[5] 100\t[6] 200";
+  cout << setw(4) << "[3] 100\t[4] 200" << endl;
+  cout << setw(4) << "[5] 400\t[6] 600" << endl;
+  cout << setw(4) << "[7] 800\t[8] 1000" << endl;
+  cout << setw(4) << line << endl;
+  PrinBalance();
+
+  if (PerfromQuickWithDrawOption(ReadQuickWithDrawOption())) {
+    SaveChanges();
+    cout << "\nDone Successfully , New Balance Is: "
+         << CurrentClint.AccountBalance << endl;
+  }
+  PauseSystem();
 }
 void PerfromMainMenueOption(eMainMenue MainMenueOption) {
   switch (MainMenueOption) {
