@@ -21,7 +21,7 @@ struct sClient {
   double AccountBalance;
   bool MarkForDelete = false;
 };
-const string ClientsFileName = "abohadhoud/lib/Clients.txt";
+const string ClientsFileName = "../../../lib/Clients.txt";
 sClient CurrentClint;
 void ShowMainMenue();
 void ClearScreen() { system("clear"); }
@@ -199,6 +199,18 @@ bool PerfromQuickWithDrawOption(short Choice) {
   }
   return false;
 }
+
+
+void ShowCheckBalanceScreen() {
+  string line = "======================";
+  cout << setw(4) << line << endl;
+  cout << setw(4) << "\tCheck Balance Screen " << endl;
+  cout << setw(4) << line << endl;
+  PrinBalance();
+
+  PauseSystem();
+}
+
 void ShowQuickWithDrawScreen() {
   string line = "======================";
   cout << setw(4) << line << endl;
@@ -219,10 +231,18 @@ void ShowQuickWithDrawScreen() {
   PauseSystem();
 }
 void PerfromMainMenueOption(eMainMenue MainMenueOption) {
+  
+  
   switch (MainMenueOption) {
   case enQuickWithDraw:
     ClearScreen();
     ShowQuickWithDrawScreen();
+    GoBackToMainMenue();
+    break;
+    
+    case enCheckBalance:
+    ClearScreen();
+    ShowCheckBalanceScreen();
     GoBackToMainMenue();
     break;
   }
