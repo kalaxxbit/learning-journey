@@ -205,6 +205,14 @@ bool PerfromQuickWithDrawOption(short Choice) {
   return false;
 }
 
+
+
+
+bool PerfromNormalWithdrawOption(short Amount) {
+    return WithDrawFromClient(Amount);
+
+
+}
 bool PerfromDepositOption(short Amount) {
     return WithDrawFromClient(Amount*-1);
 
@@ -227,6 +235,17 @@ short ReadDepositOption() {
   cin >> Choice;
   return Choice;
 }
+
+
+short ReadNormalWithdrawOption() {
+  short Choice = 0;
+  do{
+  cout << " Enter An Amount multiple of 5s: ";
+  
+  cin >> Choice;
+  }while(Choice %5!=0);
+  return Choice;
+}
 void ShowDepositScreen (){
 	
 	string line = "======================";
@@ -236,6 +255,25 @@ void ShowDepositScreen (){
   PrinBalance();
 
   if (PerfromDepositOption(ReadDepositOption())) {
+    SaveChanges();
+    cout << "\nDone Successfully , New Balance Is: "
+         << CurrentClint.AccountBalance << endl;
+  }
+  PauseSystem();
+}
+
+
+
+
+
+void NormalWithDrawScreen() {
+  string line = "======================";
+  cout << setw(4) << line << endl;
+  cout << setw(4) << "\tNormal Withdraw Screen " << endl;
+  cout << setw(4) << line << endl;
+  PrinBalance();
+
+  if (PerfromNormalWithdrawOption(ReadNormalWithdrawOption())) {
     SaveChanges();
     cout << "\nDone Successfully , New Balance Is: "
          << CurrentClint.AccountBalance << endl;
@@ -269,6 +307,13 @@ void PerfromMainMenueOption(eMainMenue MainMenueOption) {
   case enQuickWithDraw:
     ClearScreen();
     ShowQuickWithDrawScreen();
+    GoBackToMainMenue();
+    break;
+    
+    
+    case enNormalWithDraw:
+    ClearScreen();
+    NormalWithDrawScreen();
     GoBackToMainMenue();
     break;
     case enDeposit:
