@@ -149,7 +149,7 @@ void PrinBalance() {
   cout << "\nYour Balance Is : " << CurrentClint.AccountBalance << endl;
 }
 short ReadMainMenueOption() {
-  cout << "Choose what do you want to do? [1 to 8]? ";
+  cout << "Choose what do you want to do? [1 to 9]? ";
   short Choice = 0;
   cin >> Choice;
   return Choice;
@@ -198,10 +198,18 @@ bool PerfromQuickWithDrawOption(short Choice) {
 
   case 8:
     return WithDrawFromClient(1000);
+    
+  
   }
+  GoBackToMainMenue();
   return false;
 }
 
+bool PerfromDepositOption(short Amount) {
+    return WithDrawFromClient(Amount*-1);
+
+
+}
 
 void ShowCheckBalanceScreen() {
   string line = "======================";
@@ -212,7 +220,28 @@ void ShowCheckBalanceScreen() {
 
   PauseSystem();
 }
+ 
+short ReadDepositOption() {
+  cout << "Please Enter Positive Amount To Deposit: ";
+  short Choice = 0;
+  cin >> Choice;
+  return Choice;
+}
+void ShowDepositScreen (){
+	
+	string line = "======================";
+  cout << setw(4) << line << endl;
+  cout << setw(4) << "\tDeposit Screen " << endl;
+  cout << setw(4) << line << endl;
+  PrinBalance();
 
+  if (PerfromDepositOption(ReadDepositOption())) {
+    SaveChanges();
+    cout << "\nDone Successfully , New Balance Is: "
+         << CurrentClint.AccountBalance << endl;
+  }
+  PauseSystem();
+}
 void ShowQuickWithDrawScreen() {
   string line = "======================";
   cout << setw(4) << line << endl;
@@ -222,6 +251,7 @@ void ShowQuickWithDrawScreen() {
   cout << setw(4) << "[3] 100\t[4] 200" << endl;
   cout << setw(4) << "[5] 400\t[6] 600" << endl;
   cout << setw(4) << "[7] 800\t[8] 1000" << endl;
+  cout << setw(4) << "[9] Exit" << endl;
   cout << setw(4) << line << endl;
   PrinBalance();
 
@@ -239,6 +269,11 @@ void PerfromMainMenueOption(eMainMenue MainMenueOption) {
   case enQuickWithDraw:
     ClearScreen();
     ShowQuickWithDrawScreen();
+    GoBackToMainMenue();
+    break;
+    case enDeposit:
+    ClearScreen();
+    ShowDepositScreen();
     GoBackToMainMenue();
     break;
     
