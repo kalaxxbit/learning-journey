@@ -11,7 +11,8 @@ enum eMainMenue {
   enQuickWithDraw = 1,
   enNormalWithDraw,
   enDeposit,
-  enCheckBalance
+  enCheckBalance,
+  enLogout
 };
 struct sClient {
   string AccountNumber;
@@ -23,6 +24,7 @@ struct sClient {
 };
 const string ClientsFileName = "../../../lib/Clients.txt";
 sClient CurrentClint;
+void Login() ;
 void ShowMainMenue();
 void ClearScreen() { system("clear"); }
 vector<string> SplitString(string S1, string Delim) {
@@ -243,6 +245,11 @@ void PerfromMainMenueOption(eMainMenue MainMenueOption) {
     case enCheckBalance:
     ClearScreen();
     ShowCheckBalanceScreen();
+    GoBackToMainMenue();
+    break;
+    case enLogout:
+    ClearScreen();
+    Login();
     GoBackToMainMenue();
     break;
   }
