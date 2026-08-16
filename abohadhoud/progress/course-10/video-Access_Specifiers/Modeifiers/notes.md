@@ -1,0 +1,1 @@
+protected access modeifiers allow to secure class by deny any access from global and allow to access the inherits current class.
