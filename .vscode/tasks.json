@@ -4,17 +4,7 @@
         {
             "label": "تشغيل C++ (مرة واحدة)",
             "type": "shell",
-            "command": "g++",
-            "args": [
-                "-o",
-                "tmp",
-                "${file}",
-                "&&",
-                "./tmp",
-                "&&",
-                "rm",
-                "tmp"
-            ],
+            "command": "clang++ -fdeclspec -o tmp \"${file}\" && ./tmp && rm tmp",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -28,4 +18,3 @@
             }
         }
     ]
-}
