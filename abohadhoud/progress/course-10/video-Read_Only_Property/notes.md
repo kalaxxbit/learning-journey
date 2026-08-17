@@ -1,0 +1,1 @@
+you can make a read only property using make read function only for a private variable

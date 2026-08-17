@@ -1,63 +1,53 @@
-#include "../lib/MySmallLibrary.h"
-#include <iomanip>
+
+#include <cstddef>
+#include <ctime>
+#include <iostream>
+#include <pthread.h>
+#include <string>
+#include <unistd.h>
 #include <vector>
 using namespace std;
+// Defin Person Class
+class clsPerson {
 
-// DANGER
-// testing area
-//  keep out
+private:
+  int _GetMyID() { return (int)time(NULL); }
+  string _FirstName = "kalax";
+  string _LastName = "xbit";
+  int _ID = _GetMyID();
 
-// Declaration Vs Definition
-void A();
-void B() {
+public:
+  string FullName() { return _FirstName + " " + _LastName; }
 
-  cout << "IM B" << endl;
-  A();
-}
-void A() {
-  cout << "IM A" << endl;
-  B();
-}
-// DefAult Parameters
-int MySum(int a, int b, int c = 0, int d = 0) { return (a + b + c + d); }
+  int ID() { return _ID; }
+  void setFirstName(string Name) { _FirstName = Name; }
+  void setLastName(string Name) { _LastName = Name; }
 
-void PrintNumbers(int N, int M) {
-  if (N <= M) {
-    cout << N << endl;
-  }
-  PrintNumbers(N + 1, M);
-  // 1 + 1 = 2 | 2 + 1 = 3 | 3 + 1 = 4 ;
+  string FirstName() { return _FirstName; }
+  string LastName() { return _FirstName; }
+};
+void PrintPersonInfo(clsPerson Person) {
+  cout << "ID: " << Person.ID() << endl;
+  cout << "First Name: " << Person.FirstName() << endl;
+  cout << "LastName: " << Person.LastName() << endl;
+  cout << "FullName: " << Person.FullName() << endl;
 }
+int main() {
 
-void MyFunctionStatic() {
-  // Function ءاهتناب Static عم ريغتملا ةايح يهتنت لا
-  //  هئاعدتسلا ةقباسلا ةميقلا ىلع ظفاحي
-  static int Number = 1; // 2
-}
+  clsPerson Person1;
+  // A wait time to genrate deffinres IDs
+  sleep(1);
+  clsPerson Person2;
+  Person1.setFirstName("Kalax");
+  Person1.setLastName("xbit");
 
-void Swap(int &a, int &b) {
-  int Temp = a;
-  a = b;
-  b = Temp;
-}
-void SwapVectorRandom(vector<int> &v) {
-  for (int i = 0; i < v.size(); i++) {
-    Swap(v.at(i), v.at(RandomFromTo(0, v.size() - 1)));
-  }
-}
-bool Bah(string &S, char &I) {
-  if (S.length() > 0) {
-    I = S[S.length() - 1];
-    S.pop_back();
-    return 1;
-  }
-  return 0;
-}
-int main(int argc, char *argv[]) {
-  string S = "987654321";
-  char I = 0;
-  while (Bah(S, I)) {
-    cout << I << endl;
-  }
+  Person2.setFirstName("kali");
+  Person2.setLastName("xbit");
+
+  PrintPersonInfo(Person1);
+  PrintPersonInfo(Person2);
+  // string are class to
+  // S1 is Object of class string
+  string S1;
   return 0;
 }
