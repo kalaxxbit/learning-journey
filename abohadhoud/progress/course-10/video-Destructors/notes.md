@@ -1,0 +1,1 @@
+The  Destructor Is A Methon Automaticly called Before  Destoring The Object
