@@ -1,0 +1,1 @@
+Static Variable in A class is a shared varible betwen object
