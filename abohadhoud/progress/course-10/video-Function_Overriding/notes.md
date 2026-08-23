@@ -1,0 +1,1 @@
+Function Overriding : The function in derived class overrides the function in base class.
