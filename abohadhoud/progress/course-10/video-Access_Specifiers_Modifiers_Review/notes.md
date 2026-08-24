@@ -1,0 +1,1 @@
+you can pass protected member to inhertanci class
