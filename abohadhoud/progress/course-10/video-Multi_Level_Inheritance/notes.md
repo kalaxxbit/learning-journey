@@ -1,0 +1,1 @@
+you can mutli level inhertance a class
