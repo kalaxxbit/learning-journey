@@ -1,0 +1,1 @@
+we can also make a frind function like what we do with the frind class
