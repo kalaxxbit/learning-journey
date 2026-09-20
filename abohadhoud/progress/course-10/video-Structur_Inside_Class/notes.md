@@ -1,0 +1,1 @@
+we can also make structer inside a class because a structer is a data type too
