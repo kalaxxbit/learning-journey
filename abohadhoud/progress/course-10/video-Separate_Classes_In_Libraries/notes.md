@@ -1,0 +1,1 @@
+add #pragma once to your header file to tell the complier to load the header once time in memory
