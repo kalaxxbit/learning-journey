@@ -31,7 +31,7 @@ public:
 int main() {
 
   clsEmoloyee Employee1(10, "kalax", 5000);
-  // Employee1.Print();
+  Employee1.Print();
   Employee1.Func2();
 
   return 0;
