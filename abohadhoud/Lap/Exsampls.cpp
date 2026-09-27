@@ -1,32 +1,27 @@
 
-#include <cstddef>
-#include <ctime>
+// Adding Objects to Vector
+//  ProgrammingAdivces.com
+//  Mohammed Abu-Hadhoud
 #include <iostream>
-#include <pthread.h>
-#include <string>
-#include <unistd.h>
 #include <vector>
 using namespace std;
-// Passing Objects to Functions (ByRef/ByVal)Functions(ByRef / ByVal)
-// ProgrammingAdivces.com
-// Mohammed Abu-Hadhoud
-
 class clsA {
 public:
-  int x = 50;
+  // Parametarized Constructor
+  clsA(int value) { x = value; }
+  int x;
   void Print() { cout << "The value of x=" << x << endl; }
 };
-// object sent by value, any updated will not b reflected
-//  on the original object
-void Fun1(clsA A1) { A1.x = 100; }
-
-void Fun(clsA &A1) { A1.x = 200; }
 int main() {
-  clsA A;
-  A.Print();
-  Fun1(A);
-  A.Print();
-  Fun(A);
-  A.Print();
-  return 0;
+  vector<clsA> v1;
+  short NumberOfObjects = 5;
+  // inserting object at the end of vector
+  for (int i = 0; i < NumberOfObjects; i++) {
+    v1.push_back(clsA(i));
+  }
+  // printing object content
+  for (int i = 0; i < NumberOfObjects; i++) {
+    v1[i].Print();
+  }
+  system("pause>0");
 }
