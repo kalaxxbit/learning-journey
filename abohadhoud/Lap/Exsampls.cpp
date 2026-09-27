@@ -1,5 +1,4 @@
-
-// Adding Objects to Vector
+// Objects and Dynamic Array
 //  ProgrammingAdivces.com
 //  Mohammed Abu-Hadhoud
 #include <iostream>
@@ -7,21 +6,27 @@
 using namespace std;
 class clsA {
 public:
+  // dummy constructor
+  clsA() {}
   // Parametarized Constructor
   clsA(int value) { x = value; }
   int x;
   void Print() { cout << "The value of x=" << x << endl; }
 };
 int main() {
-  vector<clsA> v1;
   short NumberOfObjects = 5;
-  // inserting object at the end of vector
+  // allocating dynamic array
+  // of Size NumberOfObjects using new keyword
+  clsA *arrA = new clsA[NumberOfObjects];
+  // calling constructor
+  // for each index of array
   for (int i = 0; i < NumberOfObjects; i++) {
-    v1.push_back(clsA(i));
+    arrA[i] = clsA(i);
   }
-  // printing object content
+  // printing contents of array
   for (int i = 0; i < NumberOfObjects; i++) {
-    v1[i].Print();
+    arrA[i].Print();
   }
+  return 0;
   system("pause>0");
 }
